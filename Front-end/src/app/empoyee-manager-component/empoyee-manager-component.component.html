@@ -1,0 +1,48 @@
+<nav class="navbar navbar-light bg-dark d-flex justify-content-start">
+  <a class="navbar-brand text-white" href="#">Navbar</a>
+  <button class="btn addEmployee text-white" (click)="addEmployee($event)">Add new employee</button>
+</nav>
+<div class="container">
+  <div class="row">
+    <div *ngFor="let employee of employee;let i = index" class="col-md-6 col-xl-3" >
+      <div class="card m-b-30">
+        <div class="card-body row">
+          <div class="col-6">
+            <a href=""><img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" class="img-fluid rounded-circle w-60"></a>
+          </div>
+          <div class="col-6 card-title align-self-center mb-0">
+            <h5>{{employee?.name}}</h5>
+            <p class="m-0">{{employee?.jobTitle}}</p>
+          </div>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><i class="fa fa-envelope float-right"></i>Email :{{employee?.email}} <a href="#"></a></li>
+          <li class="list-group-item"><i class="fa fa-phone float-right"></i>Phone : {{employee?.phone}}</li>
+        </ul>
+        <div class="card-body">
+          <div class="float-right btn-group btn-group-sm">
+            <a href="#" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+            <a class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete" (click)="deleteUser(i)"><i class="fa fa-times"></i></a>
+          </div>
+          <ul class="social-links list-inline mb-0">
+            <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook-f"></i></a></li>
+            <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
+            <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row justify-content-md-center" *ngIf="employee.length == 0 && !isButtonHidden">
+  <div class="col-md-4 col-lg-4 ">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="alert alert-info">
+          <strong class="default"><i class="fa fa-user"></i> John</strong> sent you friend request.
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true" (click)="hideButton()">X</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
